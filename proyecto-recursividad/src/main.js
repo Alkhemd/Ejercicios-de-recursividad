@@ -7,6 +7,7 @@ import Factorial from './models/Factorial.js';
 import Fibonacci from './models/Fibonacci.js';
 import MCD from './models/MCD.js';
 import CambioMonedas from './models/CambioMonedas.js';
+import TorresHanoi from './models/TorresHanoi.js';
 
 // Configurar interfaz de entrada
 const rl = readline.createInterface({
@@ -23,7 +24,8 @@ function mostrarMenu() {
     console.log('2. Serie de Fibonacci');
     console.log('3. MCD (Máximo Común Divisor)');
     console.log('4. Cambio de Monedas');
-    console.log('5. Salir');
+    console.log('5. Torres de Hanói');
+    console.log('6. Salir');
     console.log('=======================================');
 }
 
@@ -77,6 +79,22 @@ async function ejecutarFactorial() {
     });
 }
 
+// Función para manejar Torres de Hanói
+async function ejecutarTorresHanoi() {
+    return new Promise((resolve) => {
+        rl.question('Ingresa el número de discos (1-10): ', (discos) => {
+            rl.question('Torre origen (A, B, C): ', (origen) => {
+                rl.question('Torre destino (A, B, C): ', (destino) => {
+                    const torresHanoi = new TorresHanoi();
+                    const resultado = torresHanoi.calcular(discos, origen, destino);
+                    console.log(resultado);
+                    resolve();
+                });
+            });
+        });
+    });
+}
+
 // Función principal
 async function main() {
     console.log('¡Bienvenido a los Ejercicios de Recursividad!');
@@ -101,6 +119,9 @@ async function main() {
                         await ejecutarCambioMonedas();
                         break;
                     case '5':
+                        await ejecutarTorresHanoi();
+                        break;
+                    case '6':
                         console.log('¡Hasta luego!');
                         continuar = false;
                         break;
