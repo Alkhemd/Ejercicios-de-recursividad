@@ -55,9 +55,10 @@ Esto abrirá un menú interactivo donde puedes probar cada ejercicio.
 - **Descripción:** Calcula el cambio óptimo con mínimo número de monedas
 - **Uso:** `cambio.calcular(73.26, 100)` → Devuelve desglose completo del cambio
 
-### ⏳ Ejercicio 5: Torres de Hanói
+### ✅ Ejercicio 5: Torres de Hanói
 - **Archivo:** `src/models/TorresHanoi.js`
-- **Estado:** Pendiente de implementación
+- **Descripción:** Resuelve el clásico problema de las Torres de Hanói con recursividad
+- **Uso:** `torresHanoi.calcular(3, "A", "C")` → Muestra secuencia de movimientos para resolver el puzzle
 
 ## 🔧 Cómo Usar las Clases en HTML/JavaScript
 
@@ -67,6 +68,7 @@ import Factorial from './src/models/Factorial.js';
 import Fibonacci from './src/models/Fibonacci.js';
 import MCD from './src/models/MCD.js';
 import CambioMonedas from './src/models/CambioMonedas.js';
+import TorresHanoi from './src/models/TorresHanoi.js';
 ```
 
 ### Ejemplos de uso:
@@ -97,6 +99,13 @@ console.log(resultado); // "El MCD de 12 y 8 es: 4"
 const cambioMonedas = new CambioMonedas();
 const resultado = cambioMonedas.calcular(73.26, 100);
 console.log(resultado); // Desglose completo del cambio
+```
+
+#### Torres de Hanói:
+```javascript
+const torresHanoi = new TorresHanoi();
+const resultado = torresHanoi.calcular(3, "A", "C");
+console.log(resultado); // Secuencia completa de movimientos para resolver el puzzle
 ```
 
 ## 🎨 Para el Desarrollador de HTML
@@ -184,7 +193,7 @@ window.calcularFactorial = calcularFactorial;
 5. **Formatos:** Todos los resultados vienen formateados y listos para mostrar
 
 ### Próximos pasos:
-- [ ] Implementar Torres de Hanói (Ejercicio 5)
+- [x] Implementar Torres de Hanói (Ejercicio 5)
 - [ ] Crear interfaz web completa
 - [ ] Añadir estilos CSS
 - [ ] Testing adicional
@@ -197,8 +206,8 @@ window.calcularFactorial = calcularFactorial;
 
 ---
 
-**📝 Última actualización:** 21 de septiembre de 2025  
-**🚀 Estado:** 4/5 ejercicios completados, listo para integración HTML
+**📝 Última actualización:** 22 de septiembre de 2025  
+**🚀 Estado:** 5/5 ejercicios completados, listo para integración HTML
 
 ---
 
