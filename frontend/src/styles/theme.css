@@ -1,0 +1,689 @@
+:root {
+  /* Tema oscuro profesional */
+  --bg-primary: #000000;
+  --bg-secondary: #1a1a1a;
+  --bg-tertiary: #2a2a2a;
+  --bg-gradient: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2a2a2a 100%);
+  --text-primary: #ffffff;
+  --text-secondary: #e0e6ed;
+  --text-muted: #8892b0;
+  --accent-color: #64ffda;
+  --accent-secondary: #8892b0;
+  --accent-hover: #4fd1c7;
+  --primary-red: #ff4757;
+  --primary-red-hover: #ff3838;
+  --card-bg: rgba(26, 26, 26, 0.8);
+  --card-hover: rgba(42, 42, 42, 0.95);
+  --border-color: rgba(100, 255, 218, 0.2);
+  --border-hover: rgba(100, 255, 218, 0.4);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.4);
+  --glow: 0 0 20px rgba(100, 255, 218, 0.3);
+  --glow-hover: 0 0 30px rgba(100, 255, 218, 0.5);
+}
+
+.app-container {
+  background: var(--bg-gradient);
+  width: 100vw;
+  min-height: 100vh;
+  color: var(--text-primary);
+  position: relative;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Efectos de fondo profesionales */
+.app-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(100, 255, 218, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(136, 146, 176, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(100, 255, 218, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.app-container::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(90deg, transparent 98%, rgba(100, 255, 218, 0.03) 100%),
+    linear-gradient(0deg, transparent 98%, rgba(100, 255, 218, 0.03) 100%);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Asegurar que el contenido esté por encima de los efectos */
+.app-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Eliminar scrollbars y espacios */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Ocultar scrollbars pero mantener funcionalidad */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.welcome-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+}
+
+/* Efectos de partículas flotantes */
+.welcome-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, var(--accent-color), transparent),
+    radial-gradient(2px 2px at 40px 70px, var(--accent-secondary), transparent),
+    radial-gradient(1px 1px at 90px 40px, var(--accent-color), transparent),
+    radial-gradient(1px 1px at 130px 80px, var(--accent-secondary), transparent),
+    radial-gradient(2px 2px at 160px 30px, var(--accent-color), transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: float 20s linear infinite;
+  opacity: 0.3;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-100px); }
+}
+
+.welcome-title {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--text-primary);
+  font-weight: 800;
+  letter-spacing: -2px;
+  position: relative;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: titleGlow 3s ease-in-out infinite alternate;
+  text-shadow: 0 0 30px rgba(100, 255, 218, 0.3);
+}
+
+@keyframes titleGlow {
+  0% { 
+    filter: drop-shadow(0 0 10px rgba(100, 255, 218, 0.3));
+    transform: scale(1);
+  }
+  100% { 
+    filter: drop-shadow(0 0 20px rgba(100, 255, 218, 0.6));
+    transform: scale(1.02);
+  }
+}
+
+.welcome-subtitle {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  margin-bottom: 4rem;
+  text-align: center;
+  opacity: 0.9;
+  font-weight: 300;
+  letter-spacing: 1px;
+  animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+}
+
+.enter-button {
+  background: linear-gradient(135deg, var(--primary-red) 0%, var(--primary-red-hover) 100%);
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 12px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  width: auto;
+  min-width: 140px;
+  max-width: 160px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.enter-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.enter-button:hover::before {
+  left: 100%;
+}
+
+.enter-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(255, 71, 87, 0.4);
+  background: linear-gradient(135deg, var(--primary-red-hover) 0%, var(--primary-red) 100%);
+}
+
+/* Pantalla de selección */
+.exercise-selection {
+  width: 100vw;
+  min-height: 100vh;
+  padding: 3rem 1rem;
+  position: relative;
+  background: var(--bg-gradient);
+  margin: 0;
+}
+
+.selection-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.selection-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+}
+
+.selection-title {
+  font-size: 3rem;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: titlePulse 4s ease-in-out infinite;
+}
+
+@keyframes titlePulse {
+  0%, 100% { 
+    filter: drop-shadow(0 0 10px rgba(100, 255, 218, 0.3));
+    transform: scale(1);
+  }
+  50% { 
+    filter: drop-shadow(0 0 20px rgba(100, 255, 218, 0.5));
+    transform: scale(1.02);
+  }
+}
+
+.selection-subtitle {
+  font-size: 1.3rem;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+}
+
+.exercise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.exercise-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid var(--border-color);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.exercise-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary), var(--accent-color));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.exercise-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent, var(--accent-color), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.exercise-card:hover::before {
+  opacity: 1;
+}
+
+.exercise-card:hover::after {
+  opacity: 0.1;
+}
+
+.exercise-card:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: var(--shadow-hover), var(--glow);
+  background: var(--card-hover);
+  border-color: var(--border-hover);
+}
+
+.exercise-image-container {
+  margin-bottom: 1.5rem;
+  border-radius: 15px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+  padding: 1.5rem;
+  position: relative;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.exercise-image-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(100, 255, 218, 0.1) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.exercise-card:hover .exercise-image-container::before {
+  opacity: 1;
+}
+
+.exercise-card:hover .exercise-image-container {
+  transform: scale(1.05);
+  border-color: var(--border-hover);
+  box-shadow: 0 8px 25px rgba(100, 255, 218, 0.2);
+}
+
+.exercise-image {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  border-radius: 10px;
+  transition: all 0.4s ease;
+  filter: brightness(1.1) contrast(1.1);
+}
+
+.exercise-card:hover .exercise-image {
+  transform: scale(1.08) rotate(2deg);
+  filter: brightness(1.2) contrast(1.2) saturate(1.1);
+}
+
+.exercise-title {
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.exercise-card:hover .exercise-title {
+  color: var(--accent-color);
+  transform: translateY(-2px);
+  text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+}
+
+.back-button {
+  background: rgba(100, 255, 218, 0.1);
+  color: var(--text-primary);
+  border: 1px solid var(--accent-color);
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  width: auto;
+  min-width: 140px;
+  max-width: 160px;
+  height: 40px;
+  justify-content: center;
+}
+
+.back-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.back-button:hover::before {
+  left: 100%;
+}
+
+.back-button:hover {
+  background: var(--accent-color);
+  color: var(--bg-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+}
+
+.exercise-container {
+  width: 100vw;
+  min-height: 100vh;
+  background: var(--bg-gradient);
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.exercise-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 2rem 1rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(26, 26, 26, 0.4);
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.exercise-header::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+}
+
+.exercise-name {
+  font-size: 2.2rem;
+  color: var(--text-primary);
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -1px;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
+}
+
+.exercise-content {
+  padding: 3rem 1rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto 0 auto;
+  background: rgba(26, 26, 26, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+}
+
+/* Sobrescribir estilos de las tarjetas de ejercicios para eliminar fondos blancos */
+.exercise-content .card {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+  box-shadow: var(--shadow) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.exercise-content .card h2 {
+  color: var(--text-primary) !important;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.exercise-content .exercise-image {
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 15px !important;
+}
+
+.exercise-content .input-group label {
+  color: var(--text-secondary) !important;
+  font-weight: 500 !important;
+}
+
+.exercise-content input {
+  background: var(--bg-secondary) !important;
+  border: 2px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+  border-radius: 10px !important;
+  transition: all 0.3s ease !important;
+}
+
+.exercise-content input:focus {
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.1) !important;
+  outline: none !important;
+}
+
+.exercise-content input::placeholder {
+  color: var(--text-muted) !important;
+}
+
+.exercise-content button {
+  background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%) !important;
+  color: var(--bg-primary) !important;
+  border: none !important;
+  border-radius: 10px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  box-shadow: var(--glow) !important;
+}
+
+.exercise-content button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: var(--glow-hover) !important;
+  background: linear-gradient(135deg, var(--accent-hover) 0%, var(--accent-color) 100%) !important;
+}
+
+.exercise-content .result {
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+  border-radius: 15px !important;
+  box-shadow: var(--shadow) !important;
+}
+
+.exercise-content .error {
+  background: rgba(229, 62, 62, 0.1) !important;
+  border: 1px solid rgba(229, 62, 62, 0.3) !important;
+  color: #ff6b6b !important;
+  border-radius: 10px !important;
+}
+
+.back-button {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 2px solid var(--accent-color);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.back-button:hover {
+  background-color: var(--accent-color);
+  color: white;
+  transform: translateX(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .welcome-title {
+    font-size: 2.8rem;
+    letter-spacing: -1px;
+  }
+  
+  .welcome-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .enter-button {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.85rem;
+    min-width: 120px;
+    max-width: 140px;
+    height: 44px;
+  }
+  
+  .selection-title {
+    font-size: 2.2rem;
+  }
+  
+  .selection-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .exercise-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+  }
+  
+  .exercise-card {
+    padding: 1.5rem;
+  }
+  
+  .exercise-image {
+    height: 160px;
+  }
+  
+  .exercise-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .exercise-name {
+    font-size: 1.8rem;
+  }
+  
+  .exercise-content {
+    padding: 2rem 1.5rem;
+    margin-top: 1rem;
+    border-radius: 15px;
+  }
+  
+  .exercise-selection {
+    padding: 2rem 1rem;
+  }
+  
+  .selection-header {
+    margin-bottom: 3rem;
+  }
+  
+  .back-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    min-width: 120px;
+    max-width: 140px;
+    height: 36px;
+  }
+}

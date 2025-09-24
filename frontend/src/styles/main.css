@@ -1,0 +1,307 @@
+/* Tema y variables */
+:root {
+  --primary: #2b6cb0;
+  --primary-hover: #2c5282;
+  --secondary: #e2e8f0;
+  --background: #f0f5fa;
+  --text: #2d3748;
+  --text-light: #4a5568;
+  --error: #e53e3e;
+  --success: #38a169;
+  --card: #ffffff;
+  --card-hover: #f8fafc;
+  --gradient: linear-gradient(135deg, #2b6cb0 0%, #4299e1 100%);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+  --shadow-hover: 0 20px 25px rgba(0,0,0,0.1);
+  --transition: all 0.3s ease;
+}
+
+/* Reset y estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--background);
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Layout */
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 2rem;
+  padding: 2rem;
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: var(--shadow-lg);
+  box-sizing: border-box;
+}
+
+/* Encabezado */
+.title-container {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: var(--gradient);
+  border-radius: 16px;
+  color: white;
+}
+
+h1 {
+  font-size: 3.5rem;
+  margin: 0;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  opacity: 0.9;
+}
+
+/* Navegación */
+.menu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--secondary);
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.menu button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--card);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+  min-width: 140px;
+  box-shadow: var(--shadow-sm);
+}
+
+.menu button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  background: var(--primary);
+  color: white;
+}
+
+.menu button.active {
+  background: var(--gradient);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.exercise-number {
+  font-size: 1rem;
+  background: var(--gradient);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  margin-left: 1rem;
+}
+
+/* Tarjetas de ejercicios */
+.ejercicio {
+  animation: fadeIn 0.5s ease;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  background: var(--card-hover);
+}
+
+.card h2 {
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.exercise-image {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  background: var(--background);
+  padding: 1rem;
+  transition: var(--transition);
+}
+
+.exercise-image:hover {
+  transform: scale(1.05);
+}
+
+/* Formularios */
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 2px solid var(--secondary);
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+}
+
+button {
+  width: 100%;
+  padding: 0.875rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background: var(--primary);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+button:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+/* Resultados */
+.result {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--gradient);
+  border-radius: 12px;
+  font-family: 'Fira Code', monospace;
+  white-space: pre-line;
+  line-height: 1.8;
+  color: white;
+  font-size: 1.1rem;
+  box-shadow: var(--shadow-md);
+  animation: slideUp 0.5s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.error {
+  color: var(--error);
+  background: #fff5f5;
+  border: 1px solid #feb2b2;
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.loading {
+  text-align: center;
+  color: var(--text-light);
+  margin: 1rem 0;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .menu {
+    flex-direction: column;
+  }
+
+  .menu button {
+    width: 100%;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+}
+
+/* Estados de carga y mensajes */
+.spinner {
+  border: 3px solid var(--secondary);
+  border-radius: 50%;
+  border-top: 3px solid var(--primary);
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+  margin: 1rem auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
