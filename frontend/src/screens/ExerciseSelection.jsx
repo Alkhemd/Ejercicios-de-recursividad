@@ -8,6 +8,8 @@ const exercisesList = [
   { id: 'mcd', name: 'Máximo Común Divisor', image: images.mcd },
   { id: 'cambioMonedas', name: 'Cambio de Monedas', image: images.cambioMonedas },
   { id: 'torresHanoi', name: 'Torres de Hanói', image: images.torresHanoi },
+  { id: 'potencia', name: 'Potencia', image: images.potencia },
+  { id: 'sumaDigitos', name: 'Suma de Dígitos', image: images.sumaDigitos },
 ];
 
 const ExerciseSelection = ({ onSelect }) => {

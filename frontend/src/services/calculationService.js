@@ -4,6 +4,8 @@ import Fibonacci from '../models/Fibonacci';
 import MCD from '../models/MCD';
 import CambioMonedas from '../models/CambioMonedas';
 import TorresHanoi from '../models/TorresHanoi';
+import Potencia from '../models/Potencia';
+import SumaDigitos from '../models/SumaDigitos';
 
 class CalculationService {
     constructor() {
@@ -12,6 +14,8 @@ class CalculationService {
         this.mcd = new MCD();
         this.cambioMonedas = new CambioMonedas();
         this.torresHanoi = new TorresHanoi();
+        this.potencia = new Potencia();
+        this.sumaDigitos = new SumaDigitos();
     }
 
     async calculate(type, ...args) {
@@ -32,6 +36,12 @@ class CalculationService {
                     break;
                 case 'torresHanoi':
                     result = this.torresHanoi.calcular(args[0], args[1], args[2]);
+                    break;
+                case 'potencia':
+                    result = this.potencia.calcular(args[0], args[1]);
+                    break;
+                case 'sumaDigitos':
+                    result = this.sumaDigitos.calcular(args[0]);
                     break;
                 default:
                     throw new Error('Tipo de cálculo no soportado');
@@ -55,6 +65,10 @@ class CalculationService {
                 return this.isValidMoneyAmount(args[0]) && this.isValidMoneyAmount(args[1]);
             case 'torresHanoi':
                 return this.isValidHanoiInput(args[0], args[1], args[2]);
+            case 'potencia':
+                return this.isValidNumber(args[0]) && this.isNonNegativeInteger(args[1]);
+            case 'sumaDigitos':
+                return this.isInteger(args[0]);
             default:
                 return false;
         }
@@ -84,6 +98,16 @@ class CalculationService {
                torres.includes(origen?.toUpperCase()) && 
                torres.includes(destino?.toUpperCase()) &&
                origen?.toUpperCase() !== destino?.toUpperCase();
+    }
+
+    isValidNumber(value) {
+        const num = Number(value);
+        return !isNaN(num);
+    }
+
+    isInteger(value) {
+        const num = Number(value);
+        return Number.isInteger(num);
     }
 }
 

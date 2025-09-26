@@ -7,6 +7,8 @@ import Fibonacci from './components/Fibonacci';
 import MCD from './components/MCD';
 import TorresHanoi from './components/TorresHanoi';
 import CambioMonedas from './components/CambioMonedas';
+import Potencia from './components/Potencia';
+import SumaDigitos from './components/SumaDigitos';
 import './styles/theme.css';
 import './styles/main.css';
 
@@ -15,7 +17,9 @@ const ejercicios = {
   fibonacci: <Fibonacci />,
   mcd: <MCD />,
   cambioMonedas: <CambioMonedas />,
-  torresHanoi: <TorresHanoi />
+  torresHanoi: <TorresHanoi />,
+  potencia: <Potencia />,
+  sumaDigitos: <SumaDigitos />
 };
 
 function App() {
@@ -68,6 +72,8 @@ function App() {
                 {selectedExercise === 'mcd' && 'Máximo Común Divisor'}
                 {selectedExercise === 'cambioMonedas' && 'Cambio de Monedas'}
                 {selectedExercise === 'torresHanoi' && 'Torres de Hanói'}
+                {selectedExercise === 'potencia' && 'Potencia'}
+                {selectedExercise === 'sumaDigitos' && 'Suma de Dígitos'}
               </h2>
             </div>
             <div className="exercise-content">
